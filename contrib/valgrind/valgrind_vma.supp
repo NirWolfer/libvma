@@ -491,6 +491,33 @@
    fun:_ZN6ServerI10IoRecvfrom9SwitchOffS1_E13server_acceptEi
    fun:_ZN6ServerI10IoRecvfrom9SwitchOffS1_E6doLoopEv
 }
+{
+   sockperf_free_check
+   Memcheck:Free
+   fun:free
+   fun:_Z9close_ifdiiP8fds_data
+   fun:server_receive_then_send_impl<RecvFromInputHandler>
+   fun:server_receive_then_send<>
+   fun:_ZN6ServerI10IoRecvfrom9SwitchOffE6doLoopEv
+   fun:doHandler
+   fun:server_handler<IoRecvfrom, SwitchOff>
+   fun:_Z14server_handlerI10IoRecvfromEviii
+   fun:_Z7do_testv
+   fun:main
+}
+{
+   sockperf_leak_on_sigint
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   fun:_ZN6ServerI10IoRecvfrom9SwitchOffE13server_acceptEi
+   fun:_ZN6ServerI10IoRecvfrom9SwitchOffE6doLoopEv
+   fun:doHandler
+   fun:server_handler<IoRecvfrom, SwitchOff>
+   fun:_Z14server_handlerI10IoRecvfromEviii
+   fun:_Z7do_testv
+   fun:main
+}
 ###########################################################
 # libnl1
 {
